@@ -1,0 +1,4 @@
+With rest APIs, we create classes inheriting from the Resource class. These are our endpoints you can access. Depending on the type
+of request that the user sends, we create methods reflecting those requests, and choose to add JWT auth requirements to them.
+
+Use Model classes to create objects that can be passed into databases via Resource classes (save_to_db)
