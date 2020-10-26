@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api #resouce is an object APIs can return
 from flask_jwt import JWT
@@ -10,7 +12,7 @@ from resources.store import Store, StoreList
 from db import db
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db' #sqlalchemy database will live in the root folder of our project
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') #If database_url is absent as an environment var, use the 2nd argument
 app.config['SQLALCHEMY_TRACK_MODIFCATIONS'] = False #this turns off the flask sqlalchemy modification tracker, but not the main sqlalchemy one
 #authentication
 app.secret_key = 'jose'
